@@ -33,7 +33,7 @@ pipeline {
               }
             }
             steps {
-               deploy adapters: [tomcat9(credentialsId: 'fbf87d29-4ab1-4694-bbac-bf551e13aa57', path: '', url: 'http://34.205.32.210:8080/')], contextPath: '/student', onFailure: false, war: '**/*.war'
+               deploy adapters: [tomcat9(credentialsId: 'fbf87d29-4ab1-4694-bbac-bf551e13aa57', path: '', url: 'http://34.205.32.210:8080/')], contextPath: '/student-dev', onFailure: false, war: '**/*.war'
             }
         }
     }
