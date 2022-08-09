@@ -7,6 +7,13 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/borkar-shubham/My_Projects.git'
                     }
         }
+        stage("Sonar-Scan") {
+            steps {
+                withCredentials([string(credentialsId: 'sonar_token', variable: 'SONAR_TOKEN')]) {
+                    sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=My_Projects -Dsonar.organization=shubham-borkar
+                }
+            }  
+        }
         stage('MavenCompile') {
             steps {
                 sh 'mvn compile'
@@ -33,7 +40,7 @@ pipeline {
               }
             }
             steps {
-               deploy adapters: [tomcat9(credentialsId: 'fbf87d29-4ab1-4694-bbac-bf551e13aa57', path: '', url: 'http://34.201.109.105:8080/')], contextPath: '/student-prod', onFailure: false, war: '**/*.war'
+               deploy adapters: [tomcat9(credentialsId: 'fbf87d29-4ab1-4694-bbac-bf551e13aa57', path: '', url: 'http://184.73.39.198:8080/')], contextPath: '/student-prod', onFailure: false, war: '**/*.war'
             }
         }
     }
