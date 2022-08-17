@@ -7,5 +7,5 @@ sudo systemctl enable tomcat9
 
 #maven-installation
 sudo apt update -y
-sudo apt install maven
+sudo apt install maven -y
 mvn --version
