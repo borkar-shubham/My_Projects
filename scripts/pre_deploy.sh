@@ -1,2 +1,3 @@
 #!/bin/bash
-mvn -f ../pom.xml package
+pwd
+mvn package
