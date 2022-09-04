@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /target/studentapp-2.2-SNAPSHOT.war
+    destination: /var/lib/tomcat9/webapps
+
+hooks:
+  BeforeInstall:
+    - location: scripts/dependencies.sh
+    - location: scripts/pre_deploy.sh
+      timeout: 300
+  ApplicationStart:
+    - location: scripts/start_application.sh
+      timeout: 300
